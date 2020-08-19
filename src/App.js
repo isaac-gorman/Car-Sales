@@ -30,7 +30,7 @@ const App = () => {
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
+        <AdditionalFeatures />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>

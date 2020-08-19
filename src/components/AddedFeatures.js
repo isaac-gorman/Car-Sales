@@ -6,7 +6,7 @@ const AddedFeatures = (props) => {
   return (
     <div className="content">
       <h6>Added features:</h6>
-      {console.log("I am the length of features", props.car.features.length)}
+      {/* {console.log("I am the length of features", props.car.features.length)} */}
       {props.car.features.length ? (
         <ol type="1">
           {props.car.features.map((item) => (
