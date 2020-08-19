@@ -1,13 +1,29 @@
-import React from 'react';
+import React from "react";
+import { removeFeature } from "../actions/actions";
+import { connect } from "react-redux";
 
-const AddedFeature = props => {
+const AddedFeature = (props) => {
+  const remove = (e) => {
+    console.log("remove button clicked");
+    props.removeFeature(props.feature);
+  };
+
   return (
     <li>
-      {/* Add an onClick to run a function to remove a feature */}
-      <button className="button">X</button>
+      {console.log("I am props", props.feature)}
+      <button className="button" onClick={remove}>
+        X
+      </button>
       {props.feature.name}
     </li>
   );
 };
 
-export default AddedFeature;
+const mapStateToProps = (state) => {
+  return {
+    additionalFeatures: state.additionalFeatures,
+  };
+};
+
+export default connect(mapStateToProps, { removeFeature })(AddedFeature);
+// I need to connect this component to the state it will alter so it can run the reducer

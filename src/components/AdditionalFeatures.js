@@ -2,6 +2,7 @@ import React from "react";
 import AdditionalFeature from "./AdditionalFeature";
 import { connect } from "react-redux";
 import { addFeature } from "../actions/actions";
+// Why do I have to import the function twice?
 
 const AdditionalFeatures = (props) => {
   return (

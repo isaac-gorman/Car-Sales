@@ -28,5 +28,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { addFeature })(AdditionalFeature);
+// export default AdditionalFeature;
 
 // Now, once the add button is clicked I need to add that feature to the feature array in the redux store, the logic will occur in the reducer, what I need to do in here is grab the given feature that was clicked and pass it to my action creator function as its agrument for when it reaches the reducer

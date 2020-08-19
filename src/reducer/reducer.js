@@ -4,7 +4,7 @@
 // Create the reducer function
 // Export the reducer and set it as the "rootReducer" and pass it to the redux store "createStore" function
 
-import { ADD_FEATURE } from "../actions/actions";
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions/actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -28,15 +28,40 @@ export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FEATURE:
       const newFeature = action.payload;
-      console.log(action.payload);
-      console.log(state.car.features);
+      // match the payload to its mathcing additionalFeature object
+      const removeMatch = state.additionalFeatures.filter((item) => {
+        return item.id !== newFeature.id;
+      });
+      console.log("I am remove match", removeMatch);
+      // const newFeaturesArray = removeMatch;
       return {
         ...state,
+        additionalFeatures: removeMatch,
         car: {
           ...state.car,
           features: [...state.car.features, newFeature],
         },
-        // now I need to take this object and pass it to the feature array within the car object
+        additionalPrice: newFeature.price,
+        // The object from the additionalFeatures Array can be passed to the features array.
+        // The features are displaying as I add them
+        // Now I need to remove the objects from the additionalFeatures array as I add them to the features array
+        // Now that I am able to remove the added additionalFeatures its time to enable the remove features
+      };
+    case REMOVE_FEATURE:
+      console.log("Reducer triggred by removeFeature action");
+      const removeFeature = action.payload;
+      const filterOutFeature = state.car.features.filter((item) => {
+        return item.id !== removeFeature.id;
+      });
+      console.log("I am the filterOutFeature", filterOutFeature);
+      return {
+        ...state,
+        car: {
+          // I need to remove the feature I selected from the array of features
+          ...state.car,
+          features: filterOutFeature,
+        },
+        additionalFeatures: [...state.additionalFeatures, removeFeature],
       };
     default:
       return state;

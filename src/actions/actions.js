@@ -4,7 +4,7 @@
 // UPDATE_TOTAL
 
 export const ADD_FEATURE = "ADD_FEATURE";
-// export const REMOVE_FEATURE = "REMOVE_FEATURE";
+export const REMOVE_FEATURE = "REMOVE_FEATURE";
 // export const UPDATE_TOTAL = "UPDATE_TOTAL";
 
 // 2) Build "Action Creator" functions that enable these actions that will be passed to the reducer
@@ -22,3 +22,11 @@ export function addFeature(newFeature) {
 // - The addFeature action creator will dispatch the action to the reducer and the send the reducer the newFeature.
 // - Now I need to import the action creator into "the component" but what component?
 // - Probably where the event listner is being fired which would be in the "Additional Feature" component?
+
+export function removeFeature(selectedFeature) {
+  console.log("I am the selectedFeature", selectedFeature);
+  return {
+    type: REMOVE_FEATURE,
+    payload: selectedFeature,
+  };
+}
