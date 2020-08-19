@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
+        <Header />
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
@@ -36,6 +36,11 @@ const App = () => {
     </div>
   );
 };
+// connect component to the store
+// use helper function to tell connect function what pieces of state I want to access
+const mapStateToProps = (state) => {
+  return state;
+};
 
 // export default App;
-export default connect(null, {})(App);
+export default connect(mapStateToProps, {})(App);
